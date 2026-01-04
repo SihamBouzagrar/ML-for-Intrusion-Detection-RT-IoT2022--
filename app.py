@@ -103,13 +103,13 @@ def load_pipeline():
         with open("pipeline1.pkl", "rb") as f:
             pipeline1 = pickle.load(f)
         with open("final_model1.pkl", "rb") as f:
-            label_encoder = pickle.load(f)
-        return pipeline1, label_encoder
+            le = pickle.load(f)
+        return pipeline1, le
     except Exception as e:
         st.error(f"Erreur lors du chargement des fichiers pickle : {e}")
         raise e
 
-pipeline, label_encoder = load_pipeline()
+pipeline, le= load_pipeline()
 
 # ==============================
 #   PRÉDICTION
