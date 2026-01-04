@@ -54,14 +54,6 @@ attack_type_dict = {
 # ==============================
 #   UI SIMPLE
 # ==============================
-st.title(" Attack Type Detection")
-st.write("Votre bouclier contre les menaces en ligne")
-
-st.markdown('<div class="main-content">', unsafe_allow_html=True)
-
-st.write("Entrez le fichier Excel à analyser :")
-uploaded_file = st.file_uploader("Upload your Excel file", type=["xlsx"])
-
 
          
 st.markdown("### 🔍 Signification des classes **Attack_type**")
