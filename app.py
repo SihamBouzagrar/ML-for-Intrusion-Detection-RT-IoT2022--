@@ -53,15 +53,6 @@ attack_type_dict = {
 }
 
 # ======================================================
-# INTERFACE PRINCIPALE
-# ======================================================
-st.title("Attack Type Detection")
-st.write("Votre bouclier contre les menaces en ligne")
-
-st.write("Entrez le fichier Excel à analyser :")
-uploaded_file = st.file_uploader("Upload your Excel file", type=["xlsx"])
-
-# ======================================================
 # SIGNIFICATION DES CLASSES
 # ======================================================
 st.markdown("### 🔍 Signification des classes **Attack_type**")
@@ -94,26 +85,17 @@ def load_pipeline():
 
 pipeline, label_encoder = load_pipeline()
 
-# ======================================================
+# # ======================================================
 # PRÉDICTION
 # ======================================================
+st.subheader("Classes Prédites")
+
 if uploaded_file is not None:
-    df = pd.read_excel(uploaded_file)
-
-    st.subheader("Aperçu des données")
-    st.write(df.head())
-
-    predictions = pipeline.predict(df)
-    decoded_predictions = label_encoder.inverse_transform(predictions)
-
-    st.subheader("Classes Prédites")
-
+    # Affichage simple des classes prédites
     for i, pred in enumerate(decoded_predictions, 1):
-        if pred in benign_classes:
-            st.write(f"{i}. {pred} → Trafic légitime")
-        else:
-            st.write(f"{i}. {pred} → ATTAQUE DÉTECTÉE")
+        st.write(f"{i}. 🛑 **{pred}**")
 
+    # Affichage des probabilités si disponibles
     if hasattr(pipeline.named_steps["classifier"], "predict_proba"):
         probs = pipeline.predict_proba(df)
         proba_df = pd.DataFrame(probs, columns=label_encoder.classes_)
