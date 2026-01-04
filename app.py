@@ -56,7 +56,7 @@ attack_type_dict = {
 # INTERFACE PRINCIPALE
 # ======================================================
 st.title("Attack Type Detection")
-st.write("Votre bouclier contre les menaces en ligne")
+
 
 st.write("Entrez le fichier Excel à analyser :")
 uploaded_file = st.file_uploader("Upload your Excel file", type=["xlsx"])
